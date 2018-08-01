@@ -98,7 +98,7 @@ class LicenseeSerializer(serializers.ModelSerializer):
     @transaction.atomic
     def create(self, validated_data):
         address_data = validated_data.pop('address')
-        licensee = Licensor.objects.create(**validated_data)
+        licensee = Licensee.objects.create(**validated_data)
         licensee.address = Address.objects.create(**address_data)
         licensee.save()
         return licensee
