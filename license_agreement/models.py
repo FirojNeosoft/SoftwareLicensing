@@ -128,6 +128,9 @@ class SoftwareLicenseAgreement(models.Model):
                                  on_delete=models.CASCADE)
     software = models.ForeignKey('Software', related_name='software_license_agreement', blank=False, null=False,\
                                  on_delete=models.CASCADE)
+
+    valid_ip_addresses = models.CharField('Valid IP Addresses', max_length=512, blank=True, null=True,\
+                                          help_text="Enter valid comma separated ip addresses.")
     terms_and_conditions = models.TextField(null=False, blank=False)
     limitation_of_liability = models.TextField(null=True, blank=True)
     termination = models.TextField(null=True, blank=True)

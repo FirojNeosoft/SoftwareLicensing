@@ -58,7 +58,7 @@ class SoftwareLicenseAgreementViewSet(viewsets.ModelViewSet):
     # parser_classes = (MultiPartParser, FormParser,)
     filter_backends = (DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter,)
     search_fields = ('terms_and_conditions', 'limitation_of_liability', 'termination', 'payment_plan',\
-                     'maintenance_agreement')
+                     'maintenance_agreement', 'valid_ip_addresses')
     ordering_fields = ('effective_date', 'expiry_date', 'delivery_date', 'created_at', 'no_of_copies', 'price',\
                        'warrenty_period')
     filter_fields = ('licensor', 'licensee', 'software', 'status')
@@ -80,7 +80,7 @@ class CheckValidityOfLicense(APIView):
             }
         else:
             data = {
-                "is_valid": True,
-                "expiry_date": license.expiry_date
+                "is_valid": True
+                # "expiry_date": license.expiry_date
             }
         return Response(data)

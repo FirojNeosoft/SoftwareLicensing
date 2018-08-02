@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_swagger',
     'license_agreement',
+    'communication'
 ]
 
 MIDDLEWARE = [
@@ -135,6 +136,7 @@ MEDIA_URL = '/media/'
 
 # Required choices variables
 STATUS_CHOICES = (('Active', 'Active'), ('Inactive', 'Inactive'), ('Delete', 'Delete'))
+MESSAGE_STATUS_CHOICES = (('Pending', 'Pending'), ('Sent', 'Sent'), ('Delete', 'Delete'))
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -197,3 +199,9 @@ LOGGING = {
         },
     },
 }
+
+# Twilio parameters
+TWILIO_SID = ""
+TWILIO_AUTH_TOKEN = ""
+TWILIO_PHONE_NUMBER = ""
+

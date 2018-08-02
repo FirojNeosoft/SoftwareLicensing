@@ -146,7 +146,7 @@ class SoftwareLicenseAgreementSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = SoftwareLicenseAgreement
-        fields = ('id', 'effective_date', 'licensor', 'licensee', 'software', 'terms_and_conditions', \
+        fields = ('id', 'effective_date', 'licensor', 'licensee', 'software', 'valid_ip_addresses','terms_and_conditions',\
                   'limitation_of_liability', 'termination', 'expiry_date', 'price', 'payment_plan', 'no_of_copies',\
                   'delivery_date', 'warrenty_period', 'maintenance_agreement', 'status', 'created_at')
         read_only_fields = ('id', 'created_at',)
