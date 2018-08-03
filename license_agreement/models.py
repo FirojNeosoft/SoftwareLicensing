@@ -97,7 +97,7 @@ class Software(models.Model):
     """
     name = models.CharField('Name', max_length=128, blank=False, null=False)
     specification = models.TextField(null=True, blank=True)
-    user_guide_document = models.FileField(upload_to='user_guide_docs/',null=True, blank=True)
+    user_guide_document = models.FileField('User Guide Document', upload_to='user_guide_docs/',null=True, blank=True)
     indemnity = models.TextField(null=True, blank=True)   #copyright or patent information
     status = models.CharField(max_length=10, choices=settings.STATUS_CHOICES, default='Active')
     created_at = models.DateTimeField(default=timezone.now)

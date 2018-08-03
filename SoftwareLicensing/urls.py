@@ -19,15 +19,25 @@ from django.conf import settings
 from django.contrib.auth import views as auth_views
 from django.conf.urls.static import static
 
+from .views import LoginView, LogoutView, ChangePasswordView
 from rest_framework_swagger.views import get_swagger_view
 
 
 schema_view = get_swagger_view(title='Software Licensing APIs')
 
 urlpatterns = [
+    path('login/', LoginView.as_view(), name="login"),
+    path('logout/', LogoutView.as_view(), name="logout"),
+    path('password_reset/', auth_views.password_reset, name='password_reset'),
+    path('password_reset/done/', auth_views.password_reset_done, name='password_reset_done'),
+    path('reset/<uidb64>/<token>/', auth_views.password_reset_confirm, name='password_reset_confirm'),
+    path('reset/done/', auth_views.password_reset_complete, name='password_reset_complete'),
+    path('change_password/', ChangePasswordView.as_view(), name="change_password"),
+
     path('schema/', schema_view),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
+    path('license/', include('license_agreement.urls')),
     path('license/api/', include('license_agreement.rest_api.urls')),
     # path('communication/api/', include('communication.rest_api.urls')),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

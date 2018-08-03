@@ -107,6 +107,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGIN_URL = '/login/'
+
+LOGIN_REDIRECT_URL = '/login/'
+
+LOGOUT_URL = '/logout/'
+
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
@@ -205,3 +212,12 @@ TWILIO_SID = ""
 TWILIO_AUTH_TOKEN = ""
 TWILIO_PHONE_NUMBER = ""
 
+# SESSION AGE 30 Minutes
+SESSION_COOKIE_AGE = 30*60
+
+#Email Server
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'firoz.nalband@triveniconsulting.com'
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = True
