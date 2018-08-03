@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block body %}
+       <div class="page-title">
+            <div class="title_left">
+                <h3>Licensees</h3>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="">
+                            <ul class="list-inline pull-right clearfix controls">
+                                <li>
+                                    <a class="btn btn-primary download-excel" href="{% url 'add_licensee' %}"> <i class="fa fa-plus"></i> Create New Licensee</a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <br />
+                            <div class="table-responsive">
+                                <table id="licensees_table" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                      <th>Name</th>
+                                      <th>designation</th>
+                                      <th>Email</th>
+                                      <th>Mobile</th>
+                                      <th>organization_name</th>
+                                      <th>Located At</th>
+                                      <th>Status</th>
+                                      <th class="no-sort">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for licensee in licensee_list %}
+                                      <tr>
+                                        <td>{{ licensee.full_name }}</td>
+                                        <td>{{ licensee.designation }}</td>
+                                        <td>{{ licensee.email }}</td>
+                                        <td>{{ licensee.mobile }}</td>
+                                        <td>{{ licensee.organization_name }}</td>
+                                        <td>{{ licensee.address.city_or_village }}, {{ licensee.address.state }}, {{ licensee.address.country }}</td>
+                                        <td>{{ licensee.status }}</td>
+                                        <td>
+                                          <a class="fa fa-pencil-square-o" href="{% url 'update_licensee' licensee.id %}"></a>
+                                          <a class="fa fa-times client_delete_icon" href="{% url 'delete_licensee' licensee.id %}" obj_name='' style="padding-left:50px;"></a>
+                                        </td>
+                                      </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+
+{% block static %}
+<script>
+  $(document).ready(function(){
+  $('#licensees_table').DataTable();
+  });
+</script>
+{% endblock %}

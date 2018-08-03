@@ -140,7 +140,7 @@ class SoftwareLicenseAgreement(models.Model):
     payment_plan = models.TextField(null=True, blank=True)
     no_of_copies = models.PositiveIntegerField(blank=False, null=False)
     delivery_date = models.DateField('Delivery Date', blank=False, null=False)
-    warrenty_period = models.PositiveIntegerField(blank=True, null=True)
+    warrenty_period = models.PositiveIntegerField(blank=True, null=True, help_text="Enter no of days.")
     maintenance_agreement = models.TextField(null=True, blank=True)
     status = models.CharField(max_length=10, choices=settings.STATUS_CHOICES, default='Active')
     created_at = models.DateTimeField(default=timezone.now)

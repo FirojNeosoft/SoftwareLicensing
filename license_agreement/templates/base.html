@@ -68,14 +68,14 @@
                    <li><a><i class="fa fa-users"></i> Users <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="{% url 'list_users' %}">System Users</a></li>
-                            <li><a href="">Licensors</a></li>
-                            <li><a href="">Licensees</a></li>
+                            <li><a href="{% url 'list_licensors' %}">Licensors</a></li>
+                            <li><a href="{% url 'list_licensees' %}">Licensees</a></li>
                         </ul>
                     </li>
                     <li><a><i class="fa fa-cog fa-fw"></i> Softwares & Licenses <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="">Softwares</a></li>
-                            <li><a href="">Licenses</a></li>
+                            <li><a href="{% url 'list_softwares' %}">Softwares</a></li>
+                            <li><a href="{% url 'list_agreements' %}">Licenses</a></li>
                         </ul>
                     </li>
                 </ul>

@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block body %}
+       <div class="page-title">
+            <div class="title_left">
+                <h3>Licensors</h3>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="">
+                            <ul class="list-inline pull-right clearfix controls">
+                                <li>
+                                    <a class="btn btn-primary download-excel" href="{% url 'add_licensor' %}"> <i class="fa fa-plus"></i> Create New Licensor</a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <br />
+                            <div class="table-responsive">
+                                <table id="licensors_table" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                      <th>Name</th>
+                                      <th>designation</th>
+                                      <th>Email</th>
+                                      <th>Mobile</th>
+                                      <th>organization_name</th>
+                                      <th>Located At</th>
+                                      <th>Status</th>
+                                      <th class="no-sort">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for licensor in licensor_list %}
+                                      <tr>
+                                        <td>{{ licensor.full_name }}</td>
+                                        <td>{{ licensor.designation }}</td>
+                                        <td>{{ licensor.email }}</td>
+                                        <td>{{ licensor.mobile }}</td>
+                                        <td>{{ licensor.organization_name }}</td>
+                                        <td>{{ licensor.address.city_or_village }}, {{ licensor.address.state }}, {{ licensor.address.country }}</td>
+                                        <td>{{ licensor.status }}</td>
+                                        <td>
+                                          <a class="fa fa-pencil-square-o" href="{% url 'update_licensor' licensor.id %}"></a>
+                                          <a class="fa fa-times client_delete_icon" href="{% url 'delete_licensor' licensor.id %}" obj_name='' style="padding-left:50px;"></a>
+                                        </td>
+                                      </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+
+{% block static %}
+<script>
+  $(document).ready(function(){
+  $('#licensors_table').DataTable();
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block body %}
+       <div class="page-title">
+            <div class="title_left">
+                <h3>Licenses</h3>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="">
+                            <ul class="list-inline pull-right clearfix controls">
+                                <li>
+                                    <a class="btn btn-primary download-excel" href="{% url 'add_agreement' %}"> <i class="fa fa-plus"></i> Create New License</a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <br />
+                            <div class="table-responsive">
+                                <table id="agreements_table" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                      <th>Licensor</th>
+                                      <th>Licensee</th>
+                                      <th>Software</th>
+                                      <th>Effective Date</th>
+                                      <th>Expiry Date</th>
+                                      <th>Price</th>
+                                      <th>No Of Copies</th>
+                                      <th>Delivery Date</th>
+                                      <th>Status</th>
+                                      <th class="no-sort">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for agreement in softwarelicenseagreement_list %}
+                                      <tr>
+                                        <td>{{ agreement.licensor.full_name }}</td>
+                                        <td>{{ agreement.licensee.full_name }}</td>
+                                        <td>{{ agreement.software.name }}</td>
+                                        <td>{{ agreement.effective_date }}</td>
+                                        <td>{{ agreement.expiry_date }}</td>
+                                        <td>{{ agreement.price }}</td>
+                                        <td>{{ agreement.no_of_copies }}</td>
+                                        <td>{{ agreement.delivery_date }}</td>
+                                        <td>{{ agreement.status }}</td>
+                                        <td>
+                                          <a class="fa fa-pencil-square-o" href="{% url 'update_agreement' agreement.id %}"></a>
+                                          <a class="fa fa-times client_delete_icon" href="{% url 'delete_agreement' agreement.id %}" obj_name='' style="padding-left:50px;"></a>
+                                        </td>
+                                      </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+
+{% block static %}
+<script>
+  $(document).ready(function(){
+  $('#agreements_table').DataTable();
+  });
+</script>
+{% endblock %}
