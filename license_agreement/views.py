@@ -64,6 +64,7 @@ class CreateUserView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
             logger.error(form.errors)
             messages.error(request, form.errors)
             return redirect('add_user')
+        messages.success(request, "{}, user added successfully.".format(user.username))
         return HttpResponseRedirect(reverse('list_users'))
 
 
