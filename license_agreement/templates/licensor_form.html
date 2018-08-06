@@ -17,15 +17,18 @@
                       <div class="row">
                         <div class="col-xs-12">
                           <div class="">
-                            <div class="box-header">
-                              {% if messages %}
-                                <ul class="messages alert alert-danger">
-                                  {% for message in messages %}
-                                    {{ message }}
-                                  {% endfor %}
-                                </ul>
-                              {% endif %}
-                            </div>
+                        <div class="box-header" >
+                          {% if messages %}
+                            <ul class="messages">
+                              {% for message in messages %}
+                                <div class="alert alert-{{ message.tags }} alert-dismissable">
+                                  <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                                {{ message }}
+                                </div>
+                              {% endfor %}
+                            </ul>
+                          {% endif %}
+                        </div>
                             <!-- /.box-header -->
                             <div class="box-body">
                               <form id="licensor-form" data-parsley-validate class="form-horizontal form-label-left" method="post" action="{% url 'add_licensor' %}">
