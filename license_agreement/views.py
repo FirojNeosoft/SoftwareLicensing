@@ -133,6 +133,7 @@ class CreateLicensorView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
             logger.error(form.errors)
             messages.error(request, form.errors)
             return redirect('add_licensor')
+        messages.success(request,"{}, licensor added successfully.".format(licensor.full_name))
         return HttpResponseRedirect(reverse('list_licensors'))
 
 
@@ -184,7 +185,6 @@ class UpdateLicensorView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
                         licensor.address = Address.objects.create(line1=line1, line2=line2, city_or_village=city,
                                                                 state=state, country=country, zip_code=int(zip_code))
                         licensor.save()
-
                 except Exception as e:
                     logger.error("{}, error occured while saving address of a licensor.".format(e))
                     messages.error(request, "Error occured while saving address of a licensor.")
@@ -193,6 +193,7 @@ class UpdateLicensorView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
             logger.error(form.errors)
             messages.error(request, form.errors)
             return redirect('update_licensor', pk)
+        messages.success(request,"{}, licensor updated successfully.".format(licensor.full_name))
         return HttpResponseRedirect(reverse('list_licensors'))
 
 
@@ -251,6 +252,7 @@ class CreateLicenseeView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
             logger.error(form.errors)
             messages.error(request, form.errors)
             return redirect('add_licensee')
+        messages.success(request, "{}, licensee created successfully.".format(licensee.full_name))
         return HttpResponseRedirect(reverse('list_licensees'))
 
 
@@ -302,7 +304,6 @@ class UpdateLicenseeView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
                         licensee.address = Address.objects.create(line1=line1, line2=line2, city_or_village=city,
                                                                 state=state, country=country, zip_code=int(zip_code))
                         licensee.save()
-
                 except Exception as e:
                     logger.error("{}, error occured while saving address of a licensee.".format(e))
                     messages.error(request, "Error occured while saving address of a licensee.")
@@ -311,6 +312,7 @@ class UpdateLicenseeView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
             logger.error(form.errors)
             messages.error(request, form.errors)
             return redirect('update_licensee', pk)
+        messages.success(request, "{}, licensee updated successfully.".format(licensee.full_name))
         return HttpResponseRedirect(reverse('list_licensees'))
 
 
