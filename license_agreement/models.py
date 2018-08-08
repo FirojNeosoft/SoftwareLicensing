@@ -131,17 +131,17 @@ class SoftwareLicenseAgreement(models.Model):
 
     valid_ip_addresses = models.CharField('Valid IP Addresses', max_length=512, blank=True, null=True,\
                                           help_text="Enter valid comma separated ip addresses.")
-    terms_and_conditions = models.TextField(null=False, blank=False)
-    limitation_of_liability = models.TextField(null=True, blank=True)
+    terms_and_conditions = models.TextField('Terms And Conditions', null=False, blank=False)
+    limitation_of_liability = models.TextField('Limitation Of Liability', null=True, blank=True)
     termination = models.TextField(null=True, blank=True)
 
     expiry_date = models.DateField('Expiry Date', blank=False, null=False)
     price = models.DecimalField(max_digits=7, decimal_places=2, blank=False, null=False, default=0)
-    payment_plan = models.TextField(null=True, blank=True)
-    no_of_copies = models.PositiveIntegerField(blank=False, null=False)
+    payment_plan = models.TextField('Payment Plan', null=True, blank=True)
+    no_of_copies = models.PositiveIntegerField('Number Of Copies', blank=False, null=False)
     delivery_date = models.DateField('Delivery Date', blank=False, null=False)
-    warrenty_period = models.PositiveIntegerField(blank=True, null=True, help_text="Enter no of days.")
-    maintenance_agreement = models.TextField(null=True, blank=True)
+    warrenty_period = models.PositiveIntegerField('Warrenty Period', blank=True, null=True, help_text="Enter no of days.")
+    maintenance_agreement = models.TextField('Maintenance Agreement', null=True, blank=True)
     status = models.CharField(max_length=10, choices=settings.STATUS_CHOICES, default='Active')
     created_at = models.DateTimeField(default=timezone.now)
 
