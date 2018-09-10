@@ -59,7 +59,7 @@ ROOT_URLCONF = 'SoftwareLicensing.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -107,11 +107,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LOGIN_URL = '/login/'
-
-LOGIN_REDIRECT_URL = '/login/'
-
-LOGOUT_URL = '/logout/'
+LOGIN_URL = 'sys_login'
+LOGIN_REDIRECT_URL = 'sys_login'
+LOGOUT_URL = 'sys_logout'
 
 
 
@@ -218,6 +216,6 @@ SESSION_COOKIE_AGE = 30*60
 #Email Server
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'firoz.nalband@triveniconsulting.com'
+EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = True
